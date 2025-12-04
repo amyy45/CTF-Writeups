@@ -1,9 +1,10 @@
 # 🧩 CTF Challenge Writeup  
-**Challenge Name:** Log Hunt  
-**Category:**  Forensics 
-**Difficulty:**  Easy 
-**Platform:**  picoCTF 
-**Date:**  *04-12-25*
+**Challenge Name:** Log Hunt   
+**Category:** Forensics  
+**Difficulty:** Easy  
+**Platform:** picoCTF  
+**Author:** Yahaya Meddy  
+**Date:** *04-12-25*
 
 ---
 
