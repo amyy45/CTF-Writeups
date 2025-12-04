@@ -57,13 +57,13 @@ cedfa5fb}
 ### 4. Combine fragments in logical order
 Flag parts clearly form a readable phrase:
 
-picoCTF{us3_
+1. picoCTF{us3_
 
-y0urlinux_
+2. y0urlinux_
 
-sk1lls_
+3. sk1lls_
 
-cedfa5fb}
+4. cedfa5fb}
 Putting them together:
 ```bash
 picoCTF{us3_y0urlinux_sk1lls_cedfa5fb}
