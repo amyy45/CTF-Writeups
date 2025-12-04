@@ -1,91 +1,107 @@
 # 🧩 CTF Challenge Writeup  
-**Challenge Name:** Log Hunt  
-**Category:**  Forensics 
-**Difficulty:**  Easy 
-**Platform:**  picoCTF 
-**Date:**  *04-12-25*
+**Challenge Name:** FANTASY CTF  
+**Category:** Misc / Intro  
+**Difficulty:** Easy  
+**Platform:** picoCTF  
+**Author:** syreal  
+**Date:** *(add your date)*
 
 ---
 
 ## 🔍 1. Challenge Description
-This challenge is a **short interactive terminal-based game** designed to introduce players to picoCTF rules, good practices, and basic competition guidelines.  
-You interact with a character named *Eibhilin* and her AI companion *Nyx* while making choices related to CTF ethics, registration, and gameplay.
+The server logs seem to leak pieces of a secret flag.
+The fragments are scattered, repeated, and must be reconstructed to get the final flag.
 
-The objective is simple:  
-➡️ **Play through the simulation and retrieve the flag at the end.**
+### Objective:
+Find all flag fragments inside the logs and combine them in the correct order.
 
 ---
 
 ## 🧠 2. Initial Thoughts / Approach
-Since this is under the *intro/misc* category, I expected:
+This looked like a typical "flag fragments inside logs" challenge.
+I expected the flag to be broken into multiple FLAGPART entries that appear in sequential order.
 
-- A fully guided, story-like experience  
-- Simple keypress interactions  
-- Basic teaching on CTF etiquette:  
-  - Do not share flags  
-  - Do not create multiple accounts  
-  - Start with “sanity check” challenges  
-- The flag would be revealed automatically at the end
+Plan:
+Search for keywords like picoCTF, FLAGPART, or braces
 
-This challenge teaches rules rather than requiring technical exploitation.
+Collect all fragment pieces
 
+Remove duplicates
+
+Combine in correct order to form the final flag
 
 ---
 
 ## 🛠️ 3. Steps to Solve
 
-### 1. Connect to the challenge instance
+### 1. Download the logs
 ```bash
-nc verbal-sleep.picoctf.net 51859
+wget https://challenge-files.picoctf.net/c_amiable_citadel/49cec6157142f24a599f4164d5b63322c2494f801390d6f22eb91b3aa592bc66/server.log
 ```
-### 2. Play through the interactive story
-The terminal displays a narrative where you must press Enter repeatedly to continue.
+### 2. Search for picoCTF in the logs
+```bash
+grep -i "picoCTF" server.log
+```
+I found multiple repeated fragments:
+```bash
+picoCTF{us3_
+picoCTF{us3_
+sk1lls_
+```
+### 3. Search for all flagged parts
+```bash
+grep -i "FLAGPART" server.log
+```
+This revealed four unique segments repeating throughout:
+```bash
+picoCTF{us3_
+y0urlinux_
+sk1lls_
+cedfa5fb}
+```
+### 4. Combine fragments in logical order
+Flag parts clearly form a readable phrase:
 
-Important decision points:
+- picoCTF{us3_
 
-Choosing account type
-```csharp
-[A] Register multiple accounts
-[B] Share an account
-[C] Register a single private account  ← Correct
+- y0urlinux_
+
+- sk1lls_
+
+- cedfa5fb}
+Putting them together:
+```bash
+picoCTF{us3_y0urlinux_sk1lls_cedfa5fb}
 ```
-Choosing how to find the flag
-```scss
-[A] Play the game  ← Correct
-[B] Search the Ether for the flag (not allowed)
-```
-### 3. Completing the “sanity” challenge
-The in-game bar loads to 100%:
-```yaml
-Playing the Game: 100%
-Playing the Game completed successfully!
-```
-### 4. The game reveals the final flag
-At the end, Nyx and Eibhilin confirm that you solved the challenge and display the flag.
 
 ---
 ## 🧩  4. Final Flag 
 ```bash
-picoCTF{m1113n1um_3d1710n_f71e4e49}
+picoCTF{us3_y0urlinux_sk1lls_cedfa5fb}
 ```
 
 ---
 ## 📚 5. Key Learnings
-- Ethical rules of CTF participation:  
-  - Do not share accounts 
-  - Do not share flags  
-  - Do not use multiple accountss  
-- Starting with “sanity challenges” helps orient beginners
-- Some CTF tasks are designed purely to teach process, not exploitation
-- Importance of reading instructions and selecting correct options
+- Extracting repeated patterns from logs using grep
+
+- Understanding how CTF flags are often fragmented in logs
+
+- Recognizing unique vs repeated entries
+
+- Assembling flag fragments logically
+
+- Importance of sequential analysis in forensics challenges
 
 ---
 ## 🚀 6. Improvements for Next Time
-- Explore more interactive terminal challenges
-- Automate netcat session logging (useful for writeups)
-- Practice recognizing ethical traps intentionally placed in intro tasks
+- Automate fragment extraction using a small Python script
+
+- Use regex to capture all alphanumeric sequences in one pass
+
+- Search for patterns more efficiently with grep -Eo
 
 ---
 ## 🔗 7. References
-- picoCTF Official Documentation
-- Unix nc (netcat) manual
+- [grep](https://www.scribd.com/document/893121011/Grep-Manual) manual
+
+- picoCTF Forensics category documentation
