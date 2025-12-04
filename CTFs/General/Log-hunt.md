@@ -44,6 +44,8 @@ grep -i "picoCTF" server.log
 I found multiple repeated fragments:
 ```bash
 picoCTF{us3_
+picoCTF{us3_
+sk1lls_
 ```
 ### 3. Search for all flagged parts
 ```bash
@@ -56,42 +58,49 @@ y0urlinux_
 sk1lls_
 cedfa5fb}
 ```
----
 ### 4. Combine fragments in logical order
 Flag parts clearly form a readable phrase:
 
-1. picoCTF{us3_
+- picoCTF{us3_
 
-2. y0urlinux_
+- y0urlinux_
 
-3. sk1lls_
+- sk1lls_
 
-4. cedfa5fb}
+- cedfa5fb}
 Putting them together:
 ```bash
 picoCTF{us3_y0urlinux_sk1lls_cedfa5fb}
 ```
+
+---
 ## 🧩  4. Final Flag 
 ```bash
 picoCTF{us3_y0urlinux_sk1lls_cedfa5fb}
 ```
+
+---
 ## 📚 5. Key Learnings
-Extracting repeated patterns from logs using grep
+- Extracting repeated patterns from logs using grep
 
-Understanding how CTF flags are often fragmented in logs
+- Understanding how CTF flags are often fragmented in logs
 
-Recognizing unique vs repeated entries
+- Recognizing unique vs repeated entries
 
-Assembling flag fragments logically
+- Assembling flag fragments logically
 
-Importance of sequential analysis in forensics challenges
+- Importance of sequential analysis in forensics challenges
+
+---
 ## 🚀 6. Improvements for Next Time
-Automate fragment extraction using a small Python script
+- Automate fragment extraction using a small Python script
 
-Use regex to capture all alphanumeric sequences in one pass
+- Use regex to capture all alphanumeric sequences in one pass
 
-Search for patterns more efficiently with grep -Eo
+- Search for patterns more efficiently with grep -Eo
+
+---
 ## 🔗 7. References
-grep manual
+- [grep](https://www.scribd.com/document/893121011/Grep-Manual) manual
 
-picoCTF Forensics category documentation
+- picoCTF Forensics category documentation
