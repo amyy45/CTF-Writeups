@@ -1,9 +1,10 @@
 # 🧩 CTF Challenge Writeup  
-**Challenge Name:** Log Hunt  
-**Category:**  Forensics 
-**Difficulty:**  Easy 
-**Platform:**  picoCTF 
-**Date:**  *04-12-25*
+**Challenge Name:** FANTASY CTF  
+**Category:** Misc / Intro  
+**Difficulty:** Easy  
+**Platform:** picoCTF  
+**Author:** syreal  
+**Date:** *04-12-25*
 
 ---
 

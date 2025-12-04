@@ -1,10 +1,9 @@
 # 🧩 CTF Challenge Writeup  
-**Challenge Name:** FANTASY CTF  
-**Category:** Misc / Intro  
-**Difficulty:** Easy  
-**Platform:** picoCTF  
-**Author:** syreal  
-**Date:** *(add your date)*
+**Challenge Name:** Log Hunt  
+**Category:**  Forensics 
+**Difficulty:**  Easy 
+**Platform:**  picoCTF 
+**Date:**  *04-12-25*
 
 ---
 
@@ -22,13 +21,10 @@ This looked like a typical "flag fragments inside logs" challenge.
 I expected the flag to be broken into multiple FLAGPART entries that appear in sequential order.
 
 Plan:
-Search for keywords like picoCTF, FLAGPART, or braces
-
-Collect all fragment pieces
-
-Remove duplicates
-
-Combine in correct order to form the final flag
+- Search for keywords like picoCTF, FLAGPART, or braces
+- Collect all fragment pieces
+- Remove duplicates
+- Combine in correct order to form the final flag
 
 ---
 
@@ -61,13 +57,9 @@ cedfa5fb}
 ```
 ### 4. Combine fragments in logical order
 Flag parts clearly form a readable phrase:
-
 - picoCTF{us3_
-
 - y0urlinux_
-
 - sk1lls_
-
 - cedfa5fb}
 Putting them together:
 ```bash
@@ -83,25 +75,18 @@ picoCTF{us3_y0urlinux_sk1lls_cedfa5fb}
 ---
 ## 📚 5. Key Learnings
 - Extracting repeated patterns from logs using grep
-
 - Understanding how CTF flags are often fragmented in logs
-
 - Recognizing unique vs repeated entries
-
 - Assembling flag fragments logically
-
 - Importance of sequential analysis in forensics challenges
 
 ---
 ## 🚀 6. Improvements for Next Time
 - Automate fragment extraction using a small Python script
-
 - Use regex to capture all alphanumeric sequences in one pass
-
 - Search for patterns more efficiently with grep -Eo
 
 ---
 ## 🔗 7. References
 - [grep](https://www.scribd.com/document/893121011/Grep-Manual) manual
-
 - picoCTF Forensics category documentation
