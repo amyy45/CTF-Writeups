@@ -11,8 +11,9 @@
 The server logs seem to leak pieces of a secret flag.
 The fragments are scattered, repeated, and must be reconstructed to get the final flag.
 
-Objective:
+### Objective:
 Find all flag fragments inside the logs and combine them in the correct order.
+
 ---
 
 ## 🧠 2. Initial Thoughts / Approach
@@ -27,6 +28,7 @@ Collect all fragment pieces
 Remove duplicates
 
 Combine in correct order to form the final flag
+
 ---
 
 ## 🛠️ 3. Steps to Solve
@@ -54,6 +56,7 @@ y0urlinux_
 sk1lls_
 cedfa5fb}
 ```
+---
 ### 4. Combine fragments in logical order
 Flag parts clearly form a readable phrase:
 
