@@ -53,7 +53,7 @@ N1 = p × q1
 N2 = p × q2
 ```
 Then:
-```yaml
+```py
 gcd(N1, N2) = p
 ```
 This completely breaks RSA security.
@@ -65,7 +65,7 @@ Once the shared prime is found:
 - Decrypt the ciphertext
 
 **Exploit script:**
-```pyhton
+```py
 import math
 from Crypto.Util.number import long_to_bytes, inverse
 
