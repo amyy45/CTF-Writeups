@@ -1,10 +1,10 @@
 # 🧩 CTF Challenge Writeup  
-**Challenge Name:** Einternecdec  
-**Category:** Cryptography 
+**Challenge Name:** interencdec  
+**Category:** Cryptography  
 **Difficulty:** Easy  
 **Platform:** picoCTF  
-**Author:** NGIRIMANA Schadrack
-**Date:** *09-01-26*
+**Author:** picoCTF  
+**Date:** *08-01-26*
 
 ---
 
