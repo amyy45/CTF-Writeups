@@ -3,7 +3,7 @@
 **Category:** Cryptography  
 **Difficulty:** Easy  
 **Platform:** picoCTF  
-**Author:** picoCTF  
+**Author:** Ngirimana Schadrack  
 **Date:** *08-01-26*
 
 ---
