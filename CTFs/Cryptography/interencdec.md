@@ -79,6 +79,7 @@ for c in s:
     else:
         out += c
 print(out)
+EOF
 ```
 Output:
 ```yaml
