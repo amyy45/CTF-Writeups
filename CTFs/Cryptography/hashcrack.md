@@ -61,7 +61,7 @@ b7a875fc1ea228b9061041b7cec4bd3c52ab3ce3
 - Length: 40 hex characters 
 - Identified as SHA-1
 
-Using a small wordlist and local verification::
+Using a small wordlist and local verification:
 ```bash
 echo -n "letmein" | sha1sum
 ```

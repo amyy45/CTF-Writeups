@@ -1,0 +1,125 @@
+# 🧩 CTF Challenge Writeup  
+**Challenge Name:** Crack the Power  
+**Category:** Cryptography  
+**Difficulty:** Medium  
+**Platform:** picoCTF (picoMini by CMU-Africa)  
+**Author:** Yahaya Meddy  
+**Date:** *10-01-26*
+
+---
+
+## 🔍 1. Challenge Description
+This challenge provides an **RSA-encrypted message** in a downloadable text file.
+The modulus is generated from primes large enough that **factoring is infeasible**, ruling out traditional RSA attacks.
+
+Instead, the challenge asks players to **analyze the numbers carefully** and exploit a weakness in how RSA is used.
+
+The objective is simple:  
+➡️ **Recover the plaintext message and extract the flag.**
+
+---
+
+## 🧠 2. Initial Thoughts / Approach
+Given the *Cryptography* category and *Medium* difficulty, I expected:
+
+- RSA-based encryption  
+- Factoring the modulus would be impractical  
+- A vulnerability related to RSA **implementation**, not mathematics  
+
+The challenge name **“Crack the Power”** hinted at the RSA formula:
+
+```yaml
+c = m^e mod n
+```
+This suggested a possible issue with the public exponent (e), rather than the modulus (n).
+
+
+---
+
+## 🛠️ 3. Steps to Solve
+
+### 1. Download and inspect the message file
+```bash
+wget https://challenge-files.picoctf.net/.../message.txt
+cat message.txt
+```
+The file contained:
+```yaml
+n = <very large integer>
+e = 20
+c = <very large integer>
+```
+### 2. Identify the vulnerability (Low Exponent RSA)
+Key observations:
+- The public exponent is small (e = 20)
+- The plaintext is a short flag
+- No padding (e.g., OAEP) is used
+
+If:
+```yaml
+m^e < n
+```
+then RSA encryption becomes::
+```yaml
+c = m^e
+```
+with **no modular** reduction.
+
+This allows recovery of m by taking the integer e-th root of c.
+### 3. Perform the low-exponent attack
+A Python script was used to compute the integer 20th root of the ciphertext.
+
+**Exploit script:**
+```py
+import gmpy2
+from Crypto.Util.number import long_to_bytes
+
+# Given values
+n = 533243488792862526372864876487972015558476758084609639178291036484536762505979244575533494210179721177427612771444407165530737395944304851576273837105495020943760864245479306542618510002482474205862628204754196547924816628892644743540164970080388264526664248913696849148511425119255713671555416474973315839345017109824349893148010866455964358290544676511280543217186127743655857081371266713418694384527145401015511524745607914050255166221258834450684893705781511821844099395903932453564599894459275163009075209010199883501651757350477674519968763648475565430724363201051610217288763953319606365780667742478503606233888576859352722076809743684159343050898842311263764404893493176121977631476550921422327027258721388423326937059110923457460318030756901735245816197255660210845666156979473229120283130937189483368618326646610727925656879968174934753321650897057490428159791619097768973322371191856903689557867217303295355238763695188844446446602773352153629404043068408327644141268659241706653484034372802622781271068072117494280260640208531182757711538823636556838888270621163106401504142980355241645849845227422621208433428766255132294103187339176714507386483525599169807412246213070204955287044372351174991253525495483482644039752259
+
+c = 640637430810406857500566702096274084238635318236179213474171471762962924031143406771762588590902396470755916529600404366017178856626504741264100246977770193177982321362431635239123331391332283310413781431317549724468046316011302717443301165248044916895605360942507583028357810072669019236437156021816483243897608716222651423340065746814875027190173089290179247176013883045798188232610328606575842929711953488636313111201073364434975416304861734107255474444898256437810232659581724786888468502454545178277401729068994688903655623034819685425430186901945673259366517562372649145103691296871839480367338134748035927612049747953193375204813837077096417935374925353519278729502554398818207750243092444833079944911226317963218327666226602587092863946963826671637061083175873944168270391171031158543469061673239737214705264979925667174942748269782844201684882259905429257929174592217288529234346005812956484839757692101317938929998836230049852549655586558526707728788020998340767097021929454867673939894353379731654252811545277025372592862223748563679444476115932107120123555249896845005062698950234571360385178811724060146325198188855919677023470832794001
+
+e = 20
+
+# Take integer e-th root
+m, exact = gmpy2.iroot(c, e)
+
+print("Exact root:", exact)
+print(long_to_bytes(m))
+```
+### 4. Run the script
+```bash
+python3 solve.py
+```
+Output::
+```yaml
+Exact root: True
+b'picoCTF{t1ny_e_f053d79c}'
+```
+
+---
+## 🧩  4. Final Flag 
+```bash
+picoCTF{t1ny_e_f053d79c}
+```
+
+---
+## 📚 5. Key Learnings
+- RSA can be broken without factoring if used incorrectly
+- Small public exponents combined with no padding are dangerous
+- Always check whether m^e < n in RSA challenges
+- Integer root attacks are fast and reliable when applicable
+- Cryptographic failures usually stem from implementation flaws
+
+---
+## 🚀 6. Improvements for Next Time
+- Automatically test for low-exponent vulnerabilities in RSA
+- Build scripts to detect when c < n
+- Practice identifying RSA misuse patterns quickly
+- Maintain a checklist of common RSA attacks for CTFs
+
+---
+## 🔗 7. References
+- picoCTF Cryptography Challenges
+- Low Exponent RSA Attack
+- RSA Encryption Fundamentals
