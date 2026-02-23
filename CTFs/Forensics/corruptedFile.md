@@ -1,9 +1,8 @@
-# 🧩 CTF Challenge Writeup  
-**Challenge Name:** Corrupted file 
+**Challenge Name:** Corrupted file  
 **Category:** Forensics  
 **Difficulty:** Easy  
 **Platform:** picoMini by CMU-Africa  
-**Author:** YAHAYA MEDDY 
+**Author:** YAHAYA MEDDY  
 **Date:** 23-02-26 
 
 ---
