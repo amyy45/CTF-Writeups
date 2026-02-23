@@ -1,3 +1,4 @@
+# 🧩 CTF Challenge Writeup  
 **Challenge Name:** Corrupted file  
 **Category:** Forensics  
 **Difficulty:** Easy  
