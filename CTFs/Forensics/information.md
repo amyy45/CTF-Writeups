@@ -4,7 +4,7 @@
 **Difficulty:** Easy  
 **Platform:** picoCTF 2021  
 **Author:** SUSIE  
-**Date:** 2026-02-26  
+**Date:** 26-02-26  
 
 ---
 
