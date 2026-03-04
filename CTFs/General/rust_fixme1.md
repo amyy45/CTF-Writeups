@@ -4,7 +4,7 @@
 **Difficulty:** Easy  
 **Platform:** picoCTF 2025  
 **Author:** TAYLOR MCCAMPBELL  
-**Date:** 03-03-26  
+**Date:** *03-03-26*  
 
 ---
 
